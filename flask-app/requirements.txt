@@ -1,0 +1,4 @@
+flask==1.1.2
+gunicorn==19.3.0
+redis==3.5.3
+rq==1.6.1
