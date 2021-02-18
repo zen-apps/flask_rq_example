@@ -4,9 +4,20 @@ COPY ./requirements.txt .
 RUN apt-get update && apt-get install -y \
     freetds-bin \
     freetds-common \
-    freetds-dev
+    freetds-dev \ 
+    supervisor \
+    redis
 
 RUN pip install -r requirements.txt
 
+
 RUN mkdir /app
 WORKDIR /app
+copy  . . 
+
+
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+EXPOSE 3019
+
+CMD ["/usr/bin/supervisord"]
