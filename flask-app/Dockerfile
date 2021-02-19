@@ -13,11 +13,9 @@ RUN pip install -r requirements.txt
 
 RUN mkdir /app
 WORKDIR /app
-copy  . . 
-
-
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY entry_point.sh entry_point.sh
 
 EXPOSE 3019
 
-CMD ["/usr/bin/supervisord"]
+
+CMD ./entry_point.sh
